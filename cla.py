@@ -1,4 +1,5 @@
 from abstract import AbstractInterface
+from validator_input import get_choice_category, get_validator_input
 
 
 class ConsoleInterface(AbstractInterface):
@@ -28,9 +29,21 @@ class ConsoleInterface(AbstractInterface):
         print(message)
 
     def get_task_input(self) -> dict:
-        name = input("Введите название задачи: ")
-        description = input("Введите описание задачи: ")
-        category = input("Введите категорию задачи: ")
+
+        name = get_validator_input(
+            "Введите название задачи: ",
+            lambda x: len(x.strip()) > 0,
+            f"{'-' * 40}\nОШИБКА! Поле 'name' не может быть пустым\n{'-' * 40}",
+        )
+        description = get_validator_input(
+            "Введите описание задачи: ",
+            lambda x: len(x.strip()) > 0,
+            f"{'-' * 40}\nОШИБКА! Поле 'name' не может быть пустым\n{'-' * 40}",
+        )
+
+        category = get_choice_category()
+        print(category, "<<<<<<<")
+        # category = input("Введите категорию задачи: ")
         period_execution = input("Введите срок выполнения задачи (YYYY-MM-DD): ")
         priority = input("Введите приоритет задачи (Низкий/Средний/Высокий): ")
         return {
