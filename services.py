@@ -1,13 +1,15 @@
-from cla import ConsoleInterface
-from task_manager import TaskManager
+# from cla import ConsoleInterface
+# from task_manager import TaskManager
 
 
 class App:
 
-    def __init__(self):
+    def __init__(self, interface_cls, task_manager_cls):
 
-        self.interface = ConsoleInterface()
-        self.task_manager = TaskManager()
+        self.interface = interface_cls()
+        self.task_manager = task_manager_cls()
+        # self.interface = ConsoleInterface()
+        # self.task_manager = TaskManager()
 
     def run(self) -> None:
         while True:

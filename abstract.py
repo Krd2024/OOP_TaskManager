@@ -41,6 +41,8 @@ class AbstractTaskService(ABC):
 
 
 # =================================================================
+
+
 class AbstractRepository(ABC):
     @abstractmethod
     def load_tasks(self) -> list:

@@ -1,5 +1,5 @@
 from abstract import AbstractInterface
-from validator_input import get_choice_category, get_validator_input
+from validator_input import checing_date, get_choice_category, get_validator_input
 
 
 class ConsoleInterface(AbstractInterface):
@@ -40,11 +40,13 @@ class ConsoleInterface(AbstractInterface):
             lambda x: len(x.strip()) > 0,
             f"{'-' * 40}\nОШИБКА! Поле 'name' не может быть пустым\n{'-' * 40}",
         )
-
+        # Выбрать категорию через валидатор
         category = get_choice_category()
-        print(category, "<<<<<<<")
-        # category = input("Введите категорию задачи: ")
-        period_execution = input("Введите срок выполнения задачи (YYYY-MM-DD): ")
+
+        # Срок выполнения задачи
+        print("Введите срок выполнения задачи (YYYY-MM-DD): ")
+        period_execution = checing_date()
+
         priority = input("Введите приоритет задачи (Низкий/Средний/Высокий): ")
         return {
             "name": name,

@@ -1,9 +1,7 @@
-from abc import ABC, abstractmethod
 from typing import List, Dict
-from abstract import AbstractTaskService, AbstractRepository
+from abstract import AbstractTaskService
 from models import Task
 from repository import RepositoryManager
-from write_read import write_read_file
 
 
 class TaskManager(AbstractTaskService):
@@ -89,7 +87,3 @@ class TaskManager(AbstractTaskService):
         self.tasks.remove(task)
         self.repository.save_tasks(self.tasks)
         print(f"Задача '{task.name}' успешно удалена.")
-
-
-#
-# print(TaskManager())
