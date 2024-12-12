@@ -5,14 +5,17 @@ from repository import RepositoryManager
 
 
 class TaskManager(AbstractTaskService):
+    """Менеджер управления задачами"""
+
     tasks = []
 
     def __init__(self):
 
         # Объект менеджера репозитория
         self.repository = RepositoryManager()
-        tasks_in_file = self.repository.load_tasks()  # Загружаем задачи из хранилища
-
+        # Загружаем задачи из хранилища
+        tasks_in_file = self.repository.load_tasks()
+        # Создать объекты задач
         for task in tasks_in_file:
             self.add_task(**task)
 

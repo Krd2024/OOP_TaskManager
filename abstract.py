@@ -19,6 +19,8 @@ class AbstractInterface(ABC):
 
 
 class AbstractTaskService(ABC):
+    """Менеджер управления задачами"""
+
     @abstractmethod
     def add_task(self, task_data: dict) -> None:
         pass
