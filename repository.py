@@ -11,6 +11,3 @@ class RepositoryManager(AbstractRepository):
 
     def save_tasks(self, tasks: list) -> None:
         write_read_file(list_tasks=tasks, choices="w")
-
-    def delete_task(self, task_id: int) -> None:
-        pass

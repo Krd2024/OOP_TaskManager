@@ -9,10 +9,11 @@ class ConsoleInterface(AbstractInterface):
         print("2. Удалить задачу")
         print("3. Найти задачу")
         print("4. Показать все задачи")
+        print("5. Обновить задачу")
         print("0. Выход")
 
-    def get_user_input(self, prompt: str) -> str:
-        pass
+    # def get_user_input(self, prompt: str) -> str:
+    #     pass
 
     def get_user_choice(self) -> str:
         return input("Выберите действие: ")
@@ -26,9 +27,9 @@ class ConsoleInterface(AbstractInterface):
             print(task)
 
     def display_message(self, message: str) -> None:
-        print(message)
+        print(f"{'-'*30}\n{message}\n{'-'*30}")
 
-    def get_task_input(self) -> dict:
+    def get_user_input(self) -> dict:
 
         name = get_validator_input(
             "Введите название задачи: ",

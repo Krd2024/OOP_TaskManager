@@ -53,7 +53,3 @@ class AbstractRepository(ABC):
     @abstractmethod
     def save_tasks(self, tasks: list) -> None:
         pass
-
-    @abstractmethod
-    def delete_task(self, task_id: int) -> None:
-        pass

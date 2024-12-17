@@ -36,5 +36,5 @@ class Task:
             f"Срок выполнения: {self.period_execution}\n"
             f"Приоритет: {self.priority}\n"
             f"Статус: {self.status}\n"
-            f"{'-' * 40}\n"
+            f"{'-' * 40}"
         )

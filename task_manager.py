@@ -24,26 +24,28 @@ class TaskManager(AbstractTaskService):
         Добавляет новую задачу в список задач и сохраняет её в репозитории.
         :param task_data: словарь с параметрами задачи.
         """
-        task = Task(*task_data.values())
+        try:
+            task = Task(*task_data.values())
 
-        self.tasks.append(task)
-        self.repository.save_tasks(self.tasks)
-
-        print(f"Задача '{task.name}' успешно добавлена.")
+            self.tasks.append(task)
+            self.repository.save_tasks(self.tasks)
+        except Exception as e:
+            return f"Ошибка: {e}"
+        return f"Задача '{task.name}' успешно добавлена."
 
     def get_tasks(self) -> list:
         return self.tasks
 
-    def update_task(self, task_id: int, updates: Dict) -> None:
+    def update_task(self, task: object, updates: Dict) -> None:
         """
         Обновляет параметры существующей задачи.
         :param task_id: уникальный идентификатор задачи.
         :param updates: словарь с обновленными данными.
         """
-        task = next((t for t in self.tasks if t.id == task_id), None)
-        if not task:
-            print(f"Задача с ID {task_id} не найдена.")
-            return
+        # task = next((t for t in self.tasks if t.id == task_id), None)
+        # if not task:
+        #     print(f"Задача с ID {task_id} не найдена.")
+        #     return
 
         for key, value in updates.items():
             setattr(task, key, value)
@@ -69,13 +71,13 @@ class TaskManager(AbstractTaskService):
                 for key, value in criteria.items()
             )
         ]
+        return found_tasks
         if found_tasks:
             print("Найдены задачи:")
             for task in found_tasks:
                 print(task)
         else:
             print("Задачи не найдены.")
-        return found_tasks
 
     def delete_task(self, task_id: int) -> None:
         """
@@ -84,9 +86,8 @@ class TaskManager(AbstractTaskService):
         """
         task = next((t for t in self.tasks if t.id == task_id), None)
         if not task:
-            print(f"Задача с ID {task_id} не найдена.")
-            return
+            return f"Задача с ID {task_id} не найдена."
 
         self.tasks.remove(task)
         self.repository.save_tasks(self.tasks)
-        print(f"Задача '{task.name}' успешно удалена.")
+        return f"Задача '{task.name}' успешно удалена."

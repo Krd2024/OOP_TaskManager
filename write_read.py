@@ -21,7 +21,6 @@ def write_read_file(
 
     """
 
-    print(list_tasks)
     # Открывает файл "tasks.csv" с указанным режимом (чтение или запись)
     with open("tasks.csv", choices, encoding="utf-8") as file:
         if choices == "w":
