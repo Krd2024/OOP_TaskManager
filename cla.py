@@ -18,16 +18,16 @@ class ConsoleInterface(AbstractInterface):
     def get_user_choice(self) -> str:
         return input("Выберите действие: ")
 
-    def display_tasks(self, tasks) -> None:
+    def display_tasks(self, tasks: list) -> None:
         if not tasks:
-            print("Список задач пуст.")
+            self.display_message("Список задач пуст.")
             return
-        print("\nЗАДАЧИ:")
+        self.display_message("ЗАДАЧИ:")
         for task in tasks:
-            print(task)
+            self.display_message(task)
 
     def display_message(self, message: str) -> None:
-        print(f"{'-'*30}\n{message}\n{'-'*30}")
+        print(message)
 
     def get_user_input(self) -> dict:
 

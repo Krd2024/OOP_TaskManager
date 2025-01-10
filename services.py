@@ -39,9 +39,9 @@ class App:
         print(task, "< - task", "|", task_id, "< - task_id")
 
         return task
-        if not task:
-            print(f"Задача с ID {task_id} не найдена.")
-            return
+        # if not task:
+        #     print(f"Задача с ID {task_id} не найдена.")
+        #     return
 
     def add_task(self) -> None:
         task_data = self.interface.get_user_input()

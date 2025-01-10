@@ -10,6 +10,9 @@ class AbstractInterface(ABC):
     def get_user_input(self, prompt: str) -> str:
         pass
 
+    def display_tasks(self, tasks: list) -> None:
+        pass
+
     @abstractmethod
     def display_message(self, message: str) -> None:
         pass
